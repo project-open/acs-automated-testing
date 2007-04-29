@@ -1,3 +1,4 @@
+
 ##############################################################################
 #
 #   Copyright 2001, OpenACS, Peter Harper.
@@ -477,7 +478,7 @@ ad_proc -public aa_export_vars {
     explicitly export the specified variables to the current testcase. You need
     to call aa_export_vars <b>before</b> you create the variables. Example:
     <pre>
-    aa_export_vars package_id item_id
+    aa_export_vars {package_id item_id}
     set package_id 23
     set item_id 109
     </pre>
@@ -1019,6 +1020,10 @@ ad_proc -private aa_execute_rollback_tests {} {
 namespace eval aa_test {}
 
 ad_proc -public aa_test::xml_report_dir {} {
+    Retrieves the XMLReportDir parameter.
+
+    @return Returns the value for the XMLReportDir parameter.
+} {
     return [parameter::get -parameter XMLReportDir]
 }
 
@@ -1187,4 +1192,37 @@ ad_proc -public aa_test::parse_test_file {
         set testcase_failure($testcase_id) $count
     }
     set test(testcase_failure) [array get testcase_failure]
+}
+
+ad_proc -public aa_get_first_url {
+    {-package_key:required}
+} {
+  Procedure for geting the url of a mounted package with the package_key. It uses the first instance that it founds. This is usefull for tclwebtest tests.
+} {
+
+    if {![db_0or1row first_url { *SQL* }]} {
+        site_node::instantiate_and_mount -package_key $package_key
+	db_1row first_url {*SQL*}
+}
+
+ return $url
+
+}
+
+ad_proc -public aa_display_result {
+    {-response:required}
+    {-explanation:required}
+} {
+    Displays either a pass or fail result with specified explanation
+    depending on the given response.
+
+    @param response A boolean value where true (or 1, etc) corresponds
+    to a pass result, otherwise the result is a fail.
+    @param explanation An explanation accompanying the response.
+} {
+    if {$response} {
+	aa_log_result "pass" $explanation
+    } else {
+	aa_log_result "fail" $explanation
+    }
 }

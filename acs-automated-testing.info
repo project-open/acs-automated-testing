@@ -5,20 +5,23 @@
     <package-name>Automated Testing</package-name>
     <pretty-plural>Automated Testing</pretty-plural>
     <initial-install-p>t</initial-install-p>
-    <singleton-p>f</singleton-p>
+    <singleton-p>t</singleton-p>
     
-    <version name="5.1.5" url="http://openacs.org/repository/download/apm/acs-automated-testing-5.1.5.apm">
+    <version name="5.3.1b1" url="http://openacs.org/repository/download/apm/acs-automated-testing-5.3.1b1.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>The interface to the automated testing facilities within OpenACS.</summary>
-        <release-date>2004-02-28</release-date>
+        <release-date>2007-04-15</release-date>
         <maturity>3</maturity>
         <vendor url="http://openacs.org">OpenACS</vendor>
+        <maturity>3</maturity>
+        <license url="http://www.gnu.org/copyleft/gpl.html">GPL version 2</license>
         <description format="text/html">Provides a UI for viewing and
         running automated tests provided by each package within the
         OpenACS system.  Also provides a UI for managing
         automatic-rebuild servers as in a test farm.</description>
 
-        <provides url="acs-automated-testing" version="5.1.4"/>
+        <provides url="acs-automated-testing" version="5.3.1b1"/>
+        <requires url="acs-kernel" version="5.3.1b1"/>
 
         <callbacks>
         </callbacks>
