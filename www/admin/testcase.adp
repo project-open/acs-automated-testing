@@ -1,6 +1,6 @@
 <master>
-  <property name="title">@title;noquote@ (@package_key@)</property>
-  <property name="context">@context;noquote@</property>
+  <property name="doc(title)">@title;noquote@ (@package_key@)</property>
+  <property name="context">@context;literal@</property>
 
   <div class="description">
     <dl>
@@ -32,18 +32,18 @@
   </div>
 
   <if @showsource@ eq 0>
-    [<a href="testcase?testcase_id=@testcase_id@&package_key=@package_key@&showsource=1&quiet=@quiet@">
+    [<a href="testcase?testcase_id=@testcase_id@&amp;package_key=@package_key@&amp;showsource=1&amp;quiet=@quiet@">
       show testcase source
     </a>]
   </if>
   <else>
-    [<a href="testcase?testcase_id=@testcase_id@&package_key=@package_key@&showsource=0&quiet=@quiet@">
+    [<a href="testcase?testcase_id=@testcase_id@&amp;package_key=@package_key@&amp;showsource=0&amp;quiet=@quiet@">
       hide testcase source
     </a>]
   </else>
 
   <ul>
-    <li><a href="rerun?testcase_id=@testcase_id@&package_key=@package_key@&quiet=@quiet@">Rerun this test case</a></li>
+    <li><a href="rerun?testcase_id=@testcase_id@&amp;package_key=@package_key@&amp;quiet=@quiet@">Rerun this test case</a></li>
     <li><a href="@resource_file_url@">Resource test definition file</a></li>
     <li><a href="@return_url@">Back to testcase list</a></li>
   </ul>
@@ -104,7 +104,7 @@
   </table>
 
   <ul>
-    <li><a href="rerun?testcase_id=@testcase_id@&package_key=@package_key@&quiet=@quiet@">Rerun this test case</a></li>
+    <li><a href="rerun?testcase_id=@testcase_id@&amp;package_key=@package_key@&amp;quiet=@quiet@">Rerun this test case</a></li>
     <li><a href="@resource_file_url@">Resource test definition file</a></li>
     <li><a href="@return_url@">Back to testcase list</a></li>
   </ul>
