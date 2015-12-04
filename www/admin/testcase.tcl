@@ -1,8 +1,8 @@
 ad_page_contract {
     @cvs-id $Id$
 } {
-    testcase_id:naturalnum,notnull
-    package_key:nohtml
+    testcase_id:word,notnull
+    package_key:token
     {showsource:boolean 0}
     {quiet:boolean 1}
 } -properties {
@@ -130,3 +130,9 @@ th {
 "
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
