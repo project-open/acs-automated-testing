@@ -39,7 +39,7 @@ proc aa_proc_copy {proc_name_old proc_name_new {new_body ""}} {
     # (like for proc based ad_procs), but the real argument/parameter
     # list, we address these differences here for all needed cases.
     #
-    if {[info proc $proc_name_old] ne ""} {
+    if {[info procs $proc_name_old] ne ""} {
         #
         # We copy a regular Tcl proc
         #
@@ -158,7 +158,7 @@ ad_proc -public aa_register_init_class {
     running a set of testcases, and the descructor called <strong>once</strong>
     upon completion of running a set of testcases.<p>
     The idea behind this is that it could be used to perform data intensive
-    operations that shared amoungst a set if testcases.  For example, mounting
+    operations that shared amongst a set if testcases.  For example, mounting
     an instance of a package.  This could be performed by each testcase
     individually, but this would be highly inefficient if there are any
     significant number of them.
@@ -398,7 +398,7 @@ ad_proc -public aa_register_case {
         if { $library eq "tclwebtest" } {
 
             # kludge: until tclwebtest installs itself in the proper
-            # place following the tcl way, we use this absolute path
+            # place following the Tcl way, we use this absolute path
             # hack.
             set tclwebtest_absolute_path "/usr/local/tclwebtest/lib"
             if { ![info exists ::auto_path] || [lsearch $::auto_path $tclwebtest_absolute_path] == -1 } {
@@ -933,11 +933,7 @@ ad_proc -public aa_log_final {
         ns_log Bug "aa_log_final: FAILED: $aa_testcase_id, $test_fails tests failed"
     }
 
-    db_dml testcase_result_insert {
-        insert into aa_test_final_results
-        (testcase_id, package_key, timestamp, passes, fails)
-        values (:aa_testcase_id, :aa_package_key, sysdate, :test_passes, :test_fails)
-    }
+    db_dml testcase_result_insert {}
 }
 
 ad_proc -public aa_run_with_teardown {
@@ -1248,12 +1244,12 @@ ad_proc -public aa_test::parse_test_file {
 ad_proc -public aa_get_first_url {
     {-package_key:required}
 } {
-    Procedure for geting the url of a mounted package with the package_key. It uses the first instance that it founds. This is usefull for tclwebtest tests.
+    Procedure for geting the url of a mounted package with the package_key. It uses the first instance that it founds. This is useful for tclwebtest tests.
 } {
 
-    if {![db_0or1row first_url { *SQL* }]} {
+    if {![db_0or1row first_url {}]} {
         site_node::instantiate_and_mount -package_key $package_key
-        db_1row first_url {*SQL*}
+        db_1row first_url {}
     }
 
     return $url
