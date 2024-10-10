@@ -80,7 +80,7 @@
     </multiple>
   </table>
 
-  <table>
+  <table cellspacing=1 cellpadding=1>
     <tr>
       <th>Time</th>
       <th>Result</th>
@@ -98,7 +98,7 @@
           <tr class="even">
         </else>
         
-        <td> @tests.timestamp@ </td>
+        <td><nobr>@tests.timestamp@</nobr></td>
         <if @tests.result@ eq "fail">
           <td class="fail">FAILED</td>
         </if>
