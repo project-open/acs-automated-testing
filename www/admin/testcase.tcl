@@ -22,7 +22,7 @@ set title "Test case $testcase_id"
 set context [list $title]
 
 if {$quiet} {
-    set filter { and result = 'fail'}
+    set filter { and result in ('fail', 'pass')}
 } else {
     set filter {}
 }

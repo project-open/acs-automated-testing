@@ -2,6 +2,25 @@
   <property name="doc(title)">@title;noquote@ (@package_key@)</property>
   <property name="context">@context;literal@</property>
 
+
+<style>
+    .description h2 { 1.5em; }
+    .fail {
+          font-weight: bold;
+          color: red;
+    }
+    .ok {
+          font-weight: bold;
+          color: green;
+    }
+    dt {
+          font-weight: bold
+    }
+    th {
+          background: #c0c0c0;
+    }
+</style>
+
   <div class="description">
     <dl>
       <dt>Description:</dt><dd>@testcase_desc@</dd>
